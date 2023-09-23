@@ -1,20 +1,25 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @font-face {
-    font-family: TheCalifornia;
-    src: url('/assets/fonts/TheCalifornia.ttf');
+    font-family: Edwardian;
+    src: url('/assets/fonts/ITCEDSCR.TTF');
+}
+@font-face {
+    font-family: Livvic;
+    src: url('/assets/fonts/Livvic-Light.ttf');
 }
 body {
     background-color: lightgray;
 }
 .bg {
-    background: url('/public/build/images/IAX10-0027.jpg' );
+    background: url('/assets/images/IAX10-0027.jpg' );
     background-repeat: no-repeat;
     background-size: cover;
 }
 h1{
-    font-family: TheCalifornia;
+    font-family: Edwardian;
     font-size: 90px;
 }
 h2{
+    font-family: Livvic;
     font-size: 120px;
 }
