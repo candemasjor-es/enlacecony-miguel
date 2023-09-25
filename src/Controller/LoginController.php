@@ -17,7 +17,7 @@ class LoginController extends AbstractController
 
         return $this->render('', [
             'last_username' => $lastUsername,
-+           'error'         => $error,
+            'error'         => $error,
         ]);
     }
 }
