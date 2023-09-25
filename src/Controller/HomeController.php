@@ -12,8 +12,12 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'last_username' => $lastUsername,
+            'error' => $error
         ]);
     }
 }

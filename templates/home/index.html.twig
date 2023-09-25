@@ -4,12 +4,13 @@
 
 {% block body %}
 <div class="container-fluid">
-<h1 class="text-center">¡Bienrenid@s &emsp; &emsp; &emsp;  <br/>  &emsp; &emsp; &emsp; invitados!</h1>
+<h1 class="text-center">¡Bienrenid@s&emsp;&emsp;&emsp;</h1>
+<h1 class="text-center">&emsp;&emsp;&emsp;invitados!</h1>
 <h1 class="text-center">Cony & Miguel</h1>
 <div class="container-fluid">
-{% if error is defined %}
-    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 <form action="{{ path('app_login') }}" method="post">
             <div class="form-group mb-3">
              <input class="form-control" type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="Correo electrónico">
