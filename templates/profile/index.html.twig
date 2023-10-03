@@ -10,9 +10,15 @@
 {% if is_granted('ROLE_ADMIN') %}
 assas
 {% elseif is_granted('ROLE_YES')  %}
-si la boda
+<div class="card text-white bg-dark">
+  <h5 class="card-header">Cuenta de banco</h5>
+  <div class="card-body">
+    <h5 class="card-title">IBAN ES77 1465 0100 9617 4820 4664</h5>
+  </div>
+</div>
 {% elseif is_granted('ROLE_NO')  %}
-No lo siento
+<p class="text-center fs-4">Se a ido a lo grande en {{ app.user.userIdentifier }} Muchas gracias</p>
+<a class="btn btn-danger" href="{{ path('app_logout') }}">Cerrar sesión</a>
 {% elseif is_granted('ROLE_USER')  %}
 <p class="text-center fs-2"> Queremos que nos acompañes el día de nuestra boda.</p>
 <p class="text-center fs-2"> Te agradecemos que confirmes tu asistencia</p>
