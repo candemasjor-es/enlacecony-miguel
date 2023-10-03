@@ -1,25 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
+{% block title %}Enlace cony i miguel - perfil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-{% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/enlacecony-miguel/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/enlacecony-miguel/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a></code></li>
-    </ul>
+<div class="container-fluid text-center">
+<h1 class="text-center">¡Bienrenid@s!</h1>
+<h1 class="text-center">Cony & Miguel</h1>
+<p class="text-center fs-4"> 3 - 2 - 2024 </p>
+{% if is_granted('ROLE_ADMIN') %}
+assas
+{% elseif is_granted('ROLE_YES')  %}
+si la boda
+{% elseif is_granted('ROLE_NO')  %}
+No lo siento
+{% elseif is_granted('ROLE_USER')  %}
+<p class="text-center fs-2"> Queremos que nos acompañes el día de nuestra boda.</p>
+<p class="text-center fs-2"> Te agradecemos que confirmes tu asistencia</p>
+<a class="btn btn-success" href="{{ path('app_profile_edit', {'id': user.id}) }}">Si asisto</a>
+<a class="btn btn-danger" href="{{ path('app_profile_no_attend', {'id': user.id}) }}">No asisto</a>
+{% endif %}
 </div>
 {% endblock %}
