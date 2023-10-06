@@ -44,9 +44,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User_id', targetEntity: ElegirMenu::class)]
     private Collection $elegirMenus;
 
+    #[ORM\OneToMany(mappedBy: 'User_id_evento', targetEntity: Evento::class)]
+    private Collection $eventos;
+
     public function __construct()
     {
         $this->elegirMenus = new ArrayCollection();
+        $this->eventos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +183,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($elegirMenu->getUserId() === $this) {
                 $elegirMenu->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Evento>
+     */
+    public function getEventos(): Collection
+    {
+        return $this->eventos;
+    }
+
+    public function addEvento(Evento $evento): static
+    {
+        if (!$this->eventos->contains($evento)) {
+            $this->eventos->add($evento);
+            $evento->setUserIdEvento($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvento(Evento $evento): static
+    {
+        if ($this->eventos->removeElement($evento)) {
+            // set the owning side to null (unless already changed)
+            if ($evento->getUserIdEvento() === $this) {
+                $evento->setUserIdEvento(null);
             }
         }
 

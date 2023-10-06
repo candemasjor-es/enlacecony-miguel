@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ElegirMenuRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ElegirMenuRepository::class)]
@@ -18,6 +19,9 @@ class ElegirMenu
 
     #[ORM\Column(length: 255)]
     private ?string $Menu_name = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $text = null;
 
     public function getId(): ?int
     {
@@ -44,6 +48,18 @@ class ElegirMenu
     public function setMenuName(string $Menu_name): static
     {
         $this->Menu_name = $Menu_name;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): static
+    {
+        $this->text = $text;
 
         return $this;
     }
