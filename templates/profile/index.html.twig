@@ -3,10 +3,8 @@
 {% block title %}Enlace cony i miguel - perfil{% endblock %}
 
 {% block body %}
+{% include 'header.html.twig' %}
 <div class="container-fluid text-center">
-<h1 class="text-center">¡Bienrenid@s!</h1>
-<h1 class="text-center">Cony & Miguel</h1>
-<p class="text-center fs-4">03/02/2024</p>
 {% if is_granted('ROLE_ADMIN') %}
 assas
 {% elseif is_granted('ROLE_YES')  %}
@@ -25,5 +23,6 @@ assas
 <a class="btn btn-success" href="{{ path('app_profile_edit', {'id': user.id}) }}">Si asisto</a>
 <a class="btn btn-danger" href="{{ path('app_profile_no_attend', {'id': user.id}) }}">No asisto</a>
 {% endif %}
+</div>
 </div>
 {% endblock %}

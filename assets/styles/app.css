@@ -23,3 +23,9 @@ h2{
     font-family: Livvic;
     font-size: 120px;
 }
+.hidden {
+    visibility: hidden;
+}
+.hidden-label {
+    visibility: hidden;
+}

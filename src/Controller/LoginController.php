@@ -11,7 +11,7 @@ class LoginController extends AbstractController
 {
     #[Route(name: 'app_login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
-    {
+      {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 

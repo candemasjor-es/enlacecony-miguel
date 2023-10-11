@@ -34,6 +34,9 @@ security:
                 lifetime: 604800
                 path: /
                 always_remember_me: true
+            login_throttling:
+                max_attempts: 3
+                interval: '15 minutes'
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -41,7 +44,19 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ['ROLE_USER', 'ROLE_YES', 'ROLE_NO', ROLE_ADMIN]}
         - { path: ^/user, roles: ROLE_ADMIN }
+        - { path: ^/elegirmenu, roles: ['ROLE_USER', ROLE_ADMIN]}
+framework:
+    rate_limiter:
+        # define 2 rate limiters (one for username+IP, the other for IP)
+        username_ip_login:
+            policy: token_bucket
+            limit: 5
+            rate: { interval: '5 minutes' }
 
+        ip_login:
+            policy: sliding_window
+            limit: 50
+            interval: '15 minutes'
 when@test:
     security:
         password_hashers:

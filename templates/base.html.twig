@@ -14,20 +14,6 @@
         {% endblock %}
     </head>
     <body class="bg" >
-    {% if app.user %}
-{% if is_granted('ROLE_YES') or is_granted('ROLE_USER') %}
-<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-  <div class="container-fluid text-bg-dark">
-    Ha iniciado sesión como {{ app.user.userIdentifier }}
-      <form class="d-flex">
-        {% if is_granted('ROLE_ADMIN') %}<a class="btn btn-secondary" href="#">Administrador</a>{% endif %}
-        <a class="btn btn-danger" href="{{ path('app_logout') }}">Cerrar sesión</a>
-      </form>
-      
-  </div>
-</nav>
-{% endif %} 
-{% endif %} 
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
     </body>
 </html>

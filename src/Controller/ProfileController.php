@@ -50,15 +50,15 @@ class ProfileController extends AbstractController
     #[Route('/{id}/edit', name: 'app_profile_edit', methods: ['GET', 'POST'])]
     public function editAttend(User $user, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $newRoles = ['ROLE_YES'];
-        $user->setRoles($newRoles);
+        //$newRoles = ['ROLE_YES'];
+        //$user->setRoles($newRoles);
         $form = $this->createForm(AttendType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_elegir_menu_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('profile/edit.html.twig', [

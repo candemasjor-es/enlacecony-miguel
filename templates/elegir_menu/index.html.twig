@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ElegirMenuController!{% endblock %}
+
+{% block body %}
+<div class="container-fluid text-center">
+{% include 'header.html.twig' %}
+    <div class="card">
+        <div class="card-header">
+            Elegir Menu
+        </div>
+        <form  method="post">
+        {{ form_start(form) }}
+        <ul class="list-group list-group-flush text-start">
+            <li>
+            <div class="form-check">
+            {{ form_widget(form.Menu_name) }}
+            </div>
+            </li>
+        </ul>
+
+            {{ form_row(form.text, {'attr': {'class': 'other-text hidden'}}) }}
+
+        {{ form_rest(form) }}
+    </div>
+    <button type="submit">Guardar</button>
+    {{ form_end(form) }}
+    </form>
+</div>
+<script>
+  $(document).ready(function() {
+    $('.menu-radio input[type="radio"]').change(function() {
+        if ($(this).val() === 'Otro') {
+            $('.other-text').css('visibility', 'visible');
+            $('.hidden-label').css('visibility', 'visible');
+        } else {
+            $('.other-text').css('visibility', 'hidden');
+            $('.hidden-label').css('visibility', 'hidden');
+        }
+    });
+});
+</script>
+{% endblock %}
