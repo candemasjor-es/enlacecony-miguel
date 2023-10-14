@@ -3,10 +3,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{% include 'header.html.twig' %}
 <div class="container-fluid text-center">
-<h1 class="text-center">¡Bienrenid@s!</h1>
-<h1 class="text-center">Cony & Miguel</h1>
-<p class="text-center fs-4"> 03/02/2024 </p> 
-{{ include('profile/_form.html.twig', {'button_label': 'Elegir Menu'}) }}
+
+
+
+{{ form_start(form) }}
+
+{% for persona in form.personas %}
+
+<div class="row g-2 text-start">
+<div class="col">
+    {{ form_row(persona.Nombres) }}
+</div>
+<div class="col">
+    {{ form_row(persona.Apellidos) }}
+</div>
+</div>
+<div class="row g-2 text-start">
+<div class="col">
+    {{ form_row(persona.Elegir_menu) }}
+</div>
+<div class="col">
+    {{ form_row(persona.Evento) }}
+</div>
+</div>
+<div class="row g-2 text-start">
+<div class="col">
+    {{ form_row(persona.otro) }}
+</div>
+</div>
+{% endfor %}
+
+<div class="row mb-3">
+<button class="btn btn-dark btn-block mb-3"  type="submit">Guardar</button>
+</div>
+{{ form_end(form) }}
+
+
 </div>
 {% endblock %}

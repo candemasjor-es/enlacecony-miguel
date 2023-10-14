@@ -29,3 +29,7 @@ h2{
 .hidden-label {
     visibility: hidden;
 }
+.label-formularop {
+    font-family: Edwardian;
+    font-size: 40px;
+}

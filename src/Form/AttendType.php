@@ -3,45 +3,83 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\Personas;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use App\Form\RolesType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AttendType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('name',TextType::class,[
+        ->add('Nombres',TextType::class,[
             'attr' => [
-                'placeholder' => 'Nombre',
+                'class' => 'form-control mb-3 font-family: Edwardian;'
+            ],
+            'label' => 'Nombre',
+            'label_attr' => ['class' => 'label-formularop'], 
+        ])
+        ->add('Apellidos',TextType::class,[
+            'attr' => [
                 'class' => 'form-control mb-3'
             ],
-            'label' => false 
+            'label' => 'Apellidos',
+            'label_attr' => ['class' => 'label-formularop'],  
         ])
-        ->add('surnames',TextType::class,[
-            'attr' => [
-                'placeholder' => 'Apellidos',
-                'class' => 'form-control mb-3'
+        ->add('Elegir_menu', ChoiceType::class,[
+            'choices' => [
+                'Menú Normal' => 'Menú Normal',
+                'Menú Vegan@' => 'Menú Vegana',
+                'Menú Vegetarian@' => 'Menú Vegetariana',
+                'Menú Para Alergenas' => 'Menú Para Alergenas',
+                'Otro' => 'Otro',
             ],
-            'label' => false 
-        ])
-        ->add('phome',TextType::class,[
-            'attr' => [
-                'placeholder' => 'Telefono',
-                'class' => 'form-control mb-3'
+            'choice_attr' => [
+                'class' => 'form-select'
             ],
-            'label' => false 
+            'attr' => [
+                'class' => 'form-select mb-3',
+                'aria-label' => 'Elegir menú',
+            ],
+            'label' => 'Elegir Menu',
+            'label_attr' => ['class' => 'label-formularop'],  
         ])
-    ;
+        ->add('Evento', ChoiceType::class,[
+            'choices' => [
+                'Coche' => 'Coche',
+                'Autobus' => 'Autobus',
+            ],
+            'choice_attr' => [
+                'class' => 'form-select',
+            ],
+            'attr' => [
+                'class' => 'form-select mb-3' 
+            ],
+            'label' => '¿Como vas al evento?',
+            'label_attr' => ['class' => 'label-formularop'],  
+        ])
+        ->add('otro', TextareaType::class, [
+            'attr' => [
+                'class' => 'form-control mb-3',
+                'rows' => 3, 
+            ],
+            'required' => false,
+            'data' => 'null',
+            'label' => 'Otros: especificar que necesidad especial',
+            'label_attr' => ['class' => 'form-label label-formularop'],  
+        ])
+        ->getForm();
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Personas::class,
         ]);
     }
 }

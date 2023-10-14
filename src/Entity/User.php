@@ -41,16 +41,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 11)]
     private ?string $phome = null;
 
-    #[ORM\OneToMany(mappedBy: 'User_id', targetEntity: ElegirMenu::class)]
-    private Collection $elegirMenus;
-
-    #[ORM\OneToMany(mappedBy: 'User_id_evento', targetEntity: Evento::class)]
-    private Collection $eventos;
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Personas::class)]
+    private Collection $personas;
 
     public function __construct()
     {
-        $this->elegirMenus = new ArrayCollection();
-        $this->eventos = new ArrayCollection();
+        $this->personas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,67 +156,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, ElegirMenu>
+     * @return Collection<int, Personas>
      */
-    public function getElegirMenus(): Collection
+    public function getPersonas(): Collection
     {
-        return $this->elegirMenus;
+        return $this->personas;
     }
 
-    public function addElegirMenu(ElegirMenu $elegirMenu): static
+    public function addPersona(Personas $persona): static
     {
-        if (!$this->elegirMenus->contains($elegirMenu)) {
-            $this->elegirMenus->add($elegirMenu);
-            $elegirMenu->setUserId($this);
+        if (!$this->personas->contains($persona)) {
+            $this->personas->add($persona);
+            $persona->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeElegirMenu(ElegirMenu $elegirMenu): static
+    public function removePersona(Personas $persona): static
     {
-        if ($this->elegirMenus->removeElement($elegirMenu)) {
+        if ($this->personas->removeElement($persona)) {
             // set the owning side to null (unless already changed)
-            if ($elegirMenu->getUserId() === $this) {
-                $elegirMenu->setUserId(null);
+            if ($persona->getUser() === $this) {
+                $persona->setUser(null);
             }
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Evento>
-     */
-    public function getEventos(): Collection
-    {
-        return $this->eventos;
-    }
-
-    public function addEvento(Evento $evento): static
-    {
-        if (!$this->eventos->contains($evento)) {
-            $this->eventos->add($evento);
-            $evento->setUserIdEvento($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvento(Evento $evento): static
-    {
-        if ($this->eventos->removeElement($evento)) {
-            // set the owning side to null (unless already changed)
-            if ($evento->getUserIdEvento() === $this) {
-                $evento->setUserIdEvento(null);
-            }
-        }
-
-        return $this;
-    }
-    public function __toString()
-    {
-        return $this->getId();
     }
    
 }
