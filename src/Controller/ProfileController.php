@@ -94,7 +94,7 @@ class ProfileController extends AbstractController
         $entityManager->flush();
         $user = $this->getUser();
         $userId = $user->getId(); // Obtener el ID del usuario
-        return $this->redirectToRoute('app_ninopersonas', ['id' => $userId], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_profilenino', ['id' => $userId], Response::HTTP_SEE_OTHER);
     }
 
     return $this->render('profile/edit.html.twig', [

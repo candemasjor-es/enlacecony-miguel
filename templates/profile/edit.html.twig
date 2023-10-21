@@ -3,7 +3,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
 {% include 'header.html.twig' %}
+
 <div class="container-fluid text-center">
 
 
@@ -11,7 +13,11 @@
 {{ form_start(form) }}
 
 {% for persona in form.personas %}
-
+ <style>
+        .persona{{ loop.index0 }} {
+            display: none;
+        }
+    </style>
 <div class="row g-2 text-start">
 <div class="col">
     {{ form_row(persona.Nombres) }}
@@ -28,18 +34,37 @@
     {{ form_row(persona.Evento) }}
 </div>
 </div>
-<div class="row g-2 text-start">
+<div class="row g-2 text-start persona{{ loop.index0 }}">
 <div class="col">
     {{ form_row(persona.otro) }}
 </div>
-</div>
+</div>    
+<script>
+
+$(document).ready(function() {
+    $('.menu-radio').change(function() {
+        var selectElement = $('[id^=form_personas_'+{{ loop.index0 }}+'_Elegir_menu]');
+        var personaElement = $('.persona' + {{ loop.index0 }});
+
+        if (selectElement.val() === 'Otro') {
+            personaElement.show();  // Mostrar la fila
+        } else {
+            personaElement.hide();  // Ocultar la fila
+        }
+    });
+});
+
+</script>
 {% endfor %}
+
 
 <div class="row mb-3">
 <button class="btn btn-dark btn-block mb-3"  type="submit">Guardar</button>
 </div>
+
 {{ form_end(form) }}
 
 
 </div>
+
 {% endblock %}

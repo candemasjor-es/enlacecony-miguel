@@ -42,8 +42,9 @@ class AttendType extends AbstractType
                 'class' => 'form-select'
             ],
             'attr' => [
-                'class' => 'form-select mb-3',
+                'class' => 'menu-radio form-select mb-3',
                 'aria-label' => 'Elegir menú',
+                'id' => 'elegir_menu_id',
             ],
             'label' => 'Elegir Menu',
             'label_attr' => ['class' => 'label-formularop'],  
@@ -64,7 +65,7 @@ class AttendType extends AbstractType
         ])
         ->add('otro', TextareaType::class, [
             'attr' => [
-                'class' => 'form-control mb-3',
+                'class' => 'form-control mb-3 other-text',
                 'rows' => 3, 
             ],
             'required' => false,
