@@ -13,6 +13,7 @@
 {{ form_start(form) }}
 
 {% for persona in form.personas %}
+<p class="label-formularop">Persona {{ loop.index }} </p>
  <style>
         .persona{{ loop.index0 }} {
             display: none;
@@ -55,6 +56,7 @@ $(document).ready(function() {
 });
 
 </script>
+
 {% endfor %}
 
 

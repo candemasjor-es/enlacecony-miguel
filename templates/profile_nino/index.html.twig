@@ -6,7 +6,7 @@
 {% include 'header.html.twig' %}
 <div class="container-fluid text-center">
 {% if is_granted('ROLE_USER')  %}
-<p class="text-center texto"> Tu tienes Hijos/as pequeños.</p>
+<p class="text-center texto"> Tu tienes Hij@s.</p>
 <a class="btn btn-success" href="{{ path('app_ninopersonas', { 'id': user.id }) }}">Si</a>
 <a class="btn btn-danger" href="">No</a>
 {% endif %}

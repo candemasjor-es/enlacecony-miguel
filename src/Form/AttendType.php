@@ -27,7 +27,7 @@ class AttendType extends AbstractType
             'attr' => [
                 'class' => 'form-control mb-3'
             ],
-            'label' => 'Apellidos',
+            'label' => 'Apellido',
             'label_attr' => ['class' => 'label-formularop'],  
         ])
         ->add('Elegir_menu', ChoiceType::class,[
