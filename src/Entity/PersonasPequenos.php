@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PersonasPequenosRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PersonasPequenosRepository::class)]
@@ -22,12 +21,6 @@ class PersonasPequenos
 
     #[ORM\Column(length: 255)]
     private ?string $Apellidos = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $elegir_menu = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $otro = null;
 
     #[ORM\Column(length: 255)]
     private ?string $tronas = null;
@@ -69,30 +62,6 @@ class PersonasPequenos
     public function setApellidos(string $Apellidos): static
     {
         $this->Apellidos = $Apellidos;
-
-        return $this;
-    }
-
-    public function getElegirMenu(): ?string
-    {
-        return $this->elegir_menu;
-    }
-
-    public function setElegirMenu(string $elegir_menu): static
-    {
-        $this->elegir_menu = $elegir_menu;
-
-        return $this;
-    }
-
-    public function getOtro(): ?string
-    {
-        return $this->otro;
-    }
-
-    public function setOtro(string $otro): static
-    {
-        $this->otro = $otro;
 
         return $this;
     }

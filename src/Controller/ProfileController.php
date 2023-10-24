@@ -7,7 +7,6 @@ use App\Entity\User;
 use App\Entity\Personas;
 use App\Form\AttendType;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

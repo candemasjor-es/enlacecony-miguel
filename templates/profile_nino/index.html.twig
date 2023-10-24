@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Enlace cony i miguel - perfil{% endblock %}
+{% block title %}Enlace cony i miguel - perfil
+{% endblock %}
 
 {% block body %}
-{% include 'header.html.twig' %}
-<div class="container-fluid text-center">
-{% if is_granted('ROLE_USER')  %}
-<p class="text-center texto"> Tu tienes Hij@s.</p>
-<a class="btn btn-success" href="{{ path('app_ninopersonas', { 'id': user.id }) }}">Si</a>
-<a class="btn btn-danger" href="{{ path('app_profilenino_no', { 'id': user.id }) }}">No</a>
-{% endif %}
-</div>
+	<div class="container-fluid text-center">
+		{% include 'header.html.twig' %}
+		{% if is_granted('ROLE_USER')  %}
+			<p class="text-center texto">
+				Tu tienes Hij@s.</p>
+			<a class="btn btn-success" href="{{ path('app_ninopersonas', { 'id': user.id }) }}">Si</a>
+			<a class="btn btn-danger" href="{{ path('app_profilenino_no', { 'id': user.id }) }}">No</a>
+		{% endif %}
+	</div>
 {% endblock %}

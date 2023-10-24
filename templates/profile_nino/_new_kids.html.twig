@@ -1,0 +1,48 @@
+{# profile_nino/_new_kids.twig#}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	{% include 'header.html.twig' %}
+
+	<div class="container-fluid text-center">
+
+
+		{{ form_start(form) }}
+
+		{% for persona in form.personas %}
+			<p class="label-formularop">Persona
+				{{ loop.index }}
+			</p>
+			<style>
+				.persona{{loop.index0}}{
+					display: none;
+				}
+			</style>
+			<div class="row g-2 text-start">
+				<div class="col">
+					{{ form_row(persona.nombres) }}
+				</div>
+				<div class="col">
+					{{ form_row(persona.Apellidos) }}
+				</div>
+			</div>
+			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					{{ form_row(persona.tronas, {'attr': {'class': ''}}) }}
+			</div>
+
+
+		{% endfor %}
+
+
+		<div class="row mb-3">
+			<button class="btn btn-dark btn-block mb-3" type="submit">Guardar</button>
+		</div>
+
+		{{ form_end(form) }}
+
+
+	</div>
+
+{% endblock %}
