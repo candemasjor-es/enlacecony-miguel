@@ -73,6 +73,16 @@ class AttendType extends AbstractType
             'label' => 'Otros: especificar que necesidad especial',
             'label_attr' => ['class' => 'form-label label-formularop'],  
         ])
+        ->add('Cancion_favorito', TextareaType::class, [
+            'attr' => [
+                'class' => 'form-control mb-3 other-text',
+                'rows' => 3, 
+            ],
+            'required' => false,
+            'data' => 'null',
+            'label' => '¿Tu canción favorito?',
+            'label_attr' => ['class' => 'form-label label-formularop'],  
+        ])
         ->getForm();
         
     }

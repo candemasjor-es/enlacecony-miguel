@@ -32,6 +32,9 @@ class Personas
     #[ORM\Column(type: Types::TEXT)]
     private ?string $otro = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $Cancion_favorito = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Personas
     public function setOtro(string $otro): static
     {
         $this->otro = $otro;
+
+        return $this;
+    }
+
+    public function getCancionFavorito(): ?string
+    {
+        return $this->Cancion_favorito;
+    }
+
+    public function setCancionFavorito(string $Cancion_favorito): static
+    {
+        $this->Cancion_favorito = $Cancion_favorito;
 
         return $this;
     }
