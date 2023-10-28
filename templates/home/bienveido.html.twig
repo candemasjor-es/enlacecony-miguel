@@ -6,18 +6,9 @@
 {% block body %}
 <style>
     #myVideo {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: auto;
-        height: auto;
-        min-width: 100%;
-        min-height: 100%;
-		display: none;
-
+        display: none;
     }
-	#aviso-orientacion-vertical {
+    #aviso-orientacion-vertical {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,12 +24,13 @@
     }
 </style>
 
-<div id="aviso-orientacion-vertical" >
-    Por favor, toque la pantalla para continuar.
+<div id="aviso-orientacion-vertical">
+    Por favor, gire su dispositivo a la orientación vertical para ver el contenido.
 </div>
+
 <video id="myVideo" muted playsinline>
     <source src="{{ asset('build/videos/fondo.mp4') }}" type="video/mp4">
-    Su navegador no es compatible con video HTML5.
+    Tu navegador no soporta el elemento de video.
 </video>
 
 <script>
@@ -46,13 +38,18 @@
     const myVideo = document.getElementById('myVideo');
 
     function verificarOrientacion() {
-        if (window.innerHeight > window.innerWidth ) {
+        if (window.innerHeight > window.innerWidth) {
             avisoOrientacionVertical.style.display = 'flex';
             myVideo.style.display = 'none';
         } else {
             avisoOrientacionVertical.style.display = 'none';
             myVideo.style.display = 'block';
             myVideo.play();
+
+            myVideo.addEventListener('ended', function() {
+                // Redirige a la ruta especificada después de que el video termine
+                window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
+            });
         }
     }
 
@@ -60,6 +57,7 @@
     window.addEventListener('resize', verificarOrientacion);
     verificarOrientacion(); // Llama a la función al cargar la página para verificar la orientación inicial
 </script>
+
 
 
 {% endblock %}
