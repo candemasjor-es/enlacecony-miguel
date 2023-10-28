@@ -28,7 +28,7 @@
     Por favor, gire su dispositivo a la orientación vertical para ver el contenido.
 </div>
 
-<video id="myVideo" muted playsinline loop>
+<video id="myVideo" muted playsinline>
     <source src="{{ asset('build/videos/fondo.mp4') }}" type="video/mp4">
     Tu navegador no soporta el elemento de video.
 </video>
@@ -46,10 +46,11 @@
             myVideo.style.display = 'block';
             myVideo.play();
 
-            myVideo.addEventListener('ended', function() {
+            setTimeout(() => {
+                myVideo.pause();
                 // Redirige a la ruta especificada después de que el video termine
-                window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
-            });
+                window.location.replace('{{ path('app_home') }}');
+            }, 44000); // 44 segundos en milisegundos
         }
     }
 
@@ -57,7 +58,4 @@
     window.addEventListener('resize', verificarOrientacion);
     verificarOrientacion(); // Llama a la función al cargar la página para verificar la orientación inicial
 </script>
-
-
-
 {% endblock %}
