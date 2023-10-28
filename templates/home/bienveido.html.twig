@@ -13,29 +13,23 @@
         return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     }
 
-    function isPortrait() {
-        return window.innerHeight > window.innerWidth;
-    }
-
-    function playVideoAndRedirect() {
-        avisoOrientacionVertical.style.display = 'none';
-        myVideo.style.display = 'block';
-        myVideo.play();
-
-        setTimeout(() => {
+    function handleOrientationChange() {
+        if (isMobile() && window.innerHeight > window.innerWidth) {
+            avisoOrientacionVertical.style.display = 'flex';
             myVideo.pause();
-            // Redirige a la ruta especificada
-            window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
-        }, 44000); // 44 segundos en milisegundos
+        } else {
+            avisoOrientacionVertical.style.display = 'none';
+            myVideo.play();
+
+            setTimeout(() => {
+                myVideo.pause();
+                // Redirige a la ruta especificada
+                window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
+            }, 44000); // 44 segundos en milisegundos
+        }
     }
 
-    if (isMobile() && isPortrait()) {
-        avisoOrientacionVertical.style.display = 'flex';
-    } else if (isMobile() && !isPortrait()) {
-        playVideoAndRedirect();
-    } else {
-        // Si no es un dispositivo móvil, redirige sin mostrar el mensaje ni el video
-        window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
-    }
+    window.addEventListener('orientationchange', handleOrientationChange);
+    handleOrientationChange(); // Llama a la función al cargar la página para verificar la orientación inicial
 </script>
 {% endblock %}
