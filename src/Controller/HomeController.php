@@ -9,7 +9,18 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'app_video')]
+    public function indexvideo (AuthenticationUtils $authenticationUtils): Response
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('home/bienveido.html.twig', [
+            'controller_name' => 'HomeController',
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
+    }
+    #[Route('/home', name: 'app_home')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
