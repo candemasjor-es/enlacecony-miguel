@@ -89,14 +89,14 @@ public function indexNo(User $user): Response
     if ($form->isSubmitted() && $form->isValid()) {
         foreach ($form->get('personas')->getData() as $persona) {
             $persona->setUser($user);
-            $entityManager->persist($persona);
+            $entityManager->persist($persona); 
         }
         
         $entityManager->flush();
-        $entityManager->persist($data);
+        $entityManager->persist($persona);
         $user = $this->getUser();
-        $userId = $user->getId(); // Obtener el ID del usuario
-        return $this->redirectToRoute('app_profilenino', ['id' => $userId], Response::HTTP_SEE_OTHER);
+        $userId = $user->getId();
+        return $this->redirectToRoute('app_profilenino_no', ['id' => $userId], Response::HTTP_SEE_OTHER);
     }
 
     return $this->render('profile_nino/_new_kids.html.twig', [

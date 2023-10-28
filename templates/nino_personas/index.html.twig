@@ -1,26 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NinoPersonasController!{% endblock %}
+{% block title %}Hello NinoPersonasController!
+{% endblock %}
 
 {% block body %}
-{% include 'header.html.twig' %}
-<div class="row justify-content-center">
-<form class="col-3  text-center  justify-content-center" method="post" action="{{ path('app_profilenino_new', { 'id': user.id }) }}">
-    <div class="mb-3 text-center">
-    <span class="label-formularop">Cuant@s niñ@s van a asistir:</span>
-    </div>
-    <div class="col-auto mb-3 text-center justify-content-center ">
-    <select class="form-select form-control" name="numero_personas" id="numero_personas" aria-label="Cuantas personas van a asistir">
-        {% for i in 1..5 %}
-            <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    </div>
-    </div>
-    <div class="col mb-3">
-    <button class="btn btn-dark btn-block mb-3" type="submit">Aceptar</button>
-    </div>
-</form>
-</div>
-</div>
-{% endblock %}
+	{% include 'header.html.twig' %}
+	<div class="row justify-content-center">
+		<form class="col-3  text-center  justify-content-center" method="post" action="{{ path('app_profilenino_new', { 'id': user.id }) }}">
+			<div class="mb-3 text-center">
+				<span class="label-formularop">Cuant@s niñ@s van a asistir:</span>
+			</div>
+			<div class="col-auto mb-3 text-center justify-content-center ">
+				<select class="form-select form-control" name="numero_personas" id="numero_personas" aria-label="Cuantas personas van a asistir">
+					{% for i in 1..5 %}
+						<option value="{{ i }}">{{ i }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		<div class="col mb-3">
+			<button class="btn btn-dark btn-block mb-3" type="submit">Aceptar</button>
+		</div>
+	</form>
+</div></div>{% endblock %}

@@ -1,28 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Enlace cony i miguel{% endblock %}
+{% block title %}Enlace cony i miguel
+{% endblock %}
 
 {% block body %}
-{% include 'header.html.twig' %}
-<div class="container-fluid">
-{% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-<form action="{{ path('app_login') }}" method="post">
-            <div class="form-group mb-3">
-             <input class="form-control" type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="Correo electrónico">
-          </div>
-          <div class="form-group mb-3">
-    <input class="form-control" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Contraseña">
-    </div>
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-         <div class="d-grid gap-1 mb-3">
-           <button class="btn btn-dark btn-block" type="submit">Entrar</button>
-           </div>
-        </form>
-<div class="d-grid gap-1 mb-3">
-<a href="{{ path('app_registro') }}" class="btn btn-dark btn-block">Registrarte</a>
-</div>
-</div>
+	{% include 'header.html.twig' %}
+	<div class="container-fluid">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+		<form action="{{ path('app_login') }}" method="post">
+			<div class="form-group mb-3">
+				<input class="form-control" type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="Correo electrónico">
+			</div>
+			<div class="form-group mb-3">
+				<input class="form-control" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Contraseña">
+			</div>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<div class="d-grid gap-1 mb-3">
+				<button class="btn btn-dark btn-block" type="submit">Entrar</button>
+			</div>
+		</form>
+		<div class="d-grid gap-1 mb-3">
+			<a href="{{ path('app_registro') }}" class="btn btn-dark btn-block">Registrarte</a>
+		</div>
+	</div>
 
 {% endblock %}

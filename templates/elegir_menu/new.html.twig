@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ElegirMenu{% endblock %}
+{% block title %}New ElegirMenu
+{% endblock %}
 
 {% block body %}
-    <h1>Create new ElegirMenu</h1>
+	<h1>Create new ElegirMenu</h1>
 
-    {{ include('elegir_menu/_form.html.twig') }}
+	{{ include('elegir_menu/_form.html.twig') }}
 
-    <a href="{{ path('app_elegirmenu_admin') }}">back to list</a>
+	<a href="{{ path('app_elegirmenu_admin') }}">back to list</a>
 {% endblock %}

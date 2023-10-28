@@ -1,30 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ElegirMenu{% endblock %}
+{% block title %}ElegirMenu
+{% endblock %}
 
 {% block body %}
-    <h1>ElegirMenu</h1>
+	<h1>ElegirMenu</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ elegir_menu.id }}</td>
-            </tr>
-            <tr>
-                <th>Menu_name</th>
-                <td>{{ elegir_menu.MenuName }}</td>
-            </tr>
-            <tr>
-                <th>Text</th>
-                <td>{{ elegir_menu.text }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ elegir_menu.id }}</td>
+			</tr>
+			<tr>
+				<th>Menu_name</th>
+				<td>{{ elegir_menu.MenuName }}</td>
+			</tr>
+			<tr>
+				<th>Text</th>
+				<td>{{ elegir_menu.text }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_elegirmenu_admin') }}">back to list</a>
+	<a href="{{ path('app_elegirmenu_admin') }}">back to list</a>
 
-    <a href="{{ path('app_elegirmenu_edit', {'id': elegir_menu.id}) }}">edit</a>
+	<a href="{{ path('app_elegirmenu_edit', {'id': elegir_menu.id}) }}">edit</a>
 
-    {{ include('elegir_menu/_delete_form.html.twig') }}
+	{{ include('elegir_menu/_delete_form.html.twig') }}
 {% endblock %}

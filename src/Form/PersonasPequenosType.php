@@ -30,8 +30,8 @@ class PersonasPequenosType extends AbstractType
             ])
             ->add('tronas', ChoiceType::class, [
                 'choices' => [
-                    'Sí' => true,
-                    'No' => false,
+                    'Sí' => 'true',
+                    'No' => 'false',
                 ],
                 'expanded' => true,
                 'multiple' => false,
