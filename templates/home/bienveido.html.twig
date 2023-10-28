@@ -19,6 +19,7 @@
 
     function playVideoAndRedirect() {
         avisoOrientacionVertical.style.display = 'none';
+        myVideo.style.display = 'block';
         myVideo.play();
 
         setTimeout(() => {
@@ -28,17 +29,13 @@
         }, 44000); // 44 segundos en milisegundos
     }
 
-    if (isMobile()) {
-        window.addEventListener('orientationchange', () => {
-            if (isPortrait()) {
-                avisoOrientacionVertical.style.display = 'block';
-            } else {
-                playVideoAndRedirect();
-            }
-        });
-    } else {
-        // Si no es un dispositivo móvil, reproduce el video y redirige después de 44 segundos sin esperar la orientación
+    if (isMobile() && isPortrait()) {
+        avisoOrientacionVertical.style.display = 'flex';
+    } else if (isMobile() && !isPortrait()) {
         playVideoAndRedirect();
+    } else {
+        // Si no es un dispositivo móvil, redirige sin mostrar el mensaje ni el video
+        window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
     }
 </script>
 {% endblock %}
