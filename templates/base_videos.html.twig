@@ -30,7 +30,7 @@ height: 100vh;
   z-index: -1;
 }
     </style>
-	<video autoplay muted loop id="myVideo"><source src="{{ asset('build/videos/fondo.mp4') }}" type="video/mp4">Su navegador no es compatible con video HTML5.</video>
+	<video autoplay muted playsinline loop id="myVideo"><source src="{{ asset('build/videos/fondo.mp4') }}" type="video/mp4">Su navegador no es compatible con video HTML5.</video>
 	{% block body %}{% endblock %}
 		</body>
 	</html>
