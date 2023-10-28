@@ -46,7 +46,7 @@
     const myVideo = document.getElementById('myVideo');
 
     function verificarOrientacion() {
-        if (window.innerWidth > window.innerHeight) {
+        if (window.innerHeight > window.innerWidth ) {
             avisoOrientacionVertical.style.display = 'flex';
             myVideo.style.display = 'none';
         } else {
