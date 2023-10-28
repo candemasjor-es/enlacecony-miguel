@@ -52,14 +52,15 @@
 
     function handleTouch() {
         isTouched = true;
-        avisoOrientacionVertical.innerHTML = 'Toque nuevamente para recargar la página.';
+        avisoOrientacionVertical.innerHTML = 'Toque nuevamente para continuar.';
         avisoOrientacionVertical.appendChild(document.createElement('br'));
-        const reloadButton = document.createElement('button');
-        reloadButton.innerHTML = 'Recargar Página';
-        reloadButton.onclick = function() {
-            window.location.reload();
-        };
-        avisoOrientacionVertical.appendChild(reloadButton);
+        avisoOrientacionVertical.innerHTML += 'O espere, será redirigido automáticamente.';
+        
+        setTimeout(() => {
+            // Redirige a la ruta especificada
+            window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
+        }, 44000); // 44 segundos en milisegundos
+
         handleOrientationChange();
     }
 
@@ -68,5 +69,6 @@
     window.addEventListener('orientationchange', handleOrientationChange);
     handleOrientationChange(); // Llama a la función al cargar la página para verificar la orientación inicial
 </script>
+
 
 {% endblock %}
