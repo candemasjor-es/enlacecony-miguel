@@ -26,13 +26,12 @@
     window.addEventListener('orientationchange', () => {
         if (window.orientation === 0 || window.orientation === 180) {
             // Orientación vertical
-            clearTimeout(videoTimeout); // Limpiar el temporizador si el dispositivo se gira antes de que se detenga el video
+            detenerVideo(); // Detener el video
             avisoOrientacionVertical.style.display = 'block';
-            myVideo.pause();
         } else {
             // Orientación horizontal
             avisoOrientacionVertical.style.display = 'none';
-            reproducirVideo();
+            reproducirVideo(); // Reproducir el video nuevamente
         }
     });
 
