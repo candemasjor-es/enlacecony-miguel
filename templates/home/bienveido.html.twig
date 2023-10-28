@@ -22,7 +22,7 @@
     }
 
     function handleOrientationChange() {
-        if (isMobile() && window.innerHeight > window.innerWidth) {
+        if (isMobile() && window.innerWidth > window.innerHeight) {
             avisoOrientacionVertical.style.display = 'flex';
             myVideo.pause();
         } else if (isTouched) {
