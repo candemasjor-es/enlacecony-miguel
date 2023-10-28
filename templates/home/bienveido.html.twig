@@ -9,32 +9,36 @@
     const avisoOrientacionVertical = document.getElementById('aviso-orientacion-vertical');
     const myVideo = document.getElementById('myVideo');
 
-    function isiOS() {
-        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    function isMobile() {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     }
 
-    function isAndroid() {
-        return /Android/i.test(navigator.userAgent);
+    function isPortrait() {
+        return window.innerHeight > window.innerWidth;
     }
 
-    window.addEventListener('orientationchange', () => {
-        if (isiOS() || isAndroid()) {
-            if (window.orientation === 0 || window.orientation === 180) {
-                // Orientación vertical
+    function playVideoAndRedirect() {
+        avisoOrientacionVertical.style.display = 'none';
+        myVideo.play();
+
+        setTimeout(() => {
+            myVideo.pause();
+            // Redirige a la ruta especificada
+            window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
+        }, 44000); // 44 segundos en milisegundos
+    }
+
+    if (isMobile()) {
+        window.addEventListener('orientationchange', () => {
+            if (isPortrait()) {
                 avisoOrientacionVertical.style.display = 'block';
-                myVideo.pause(); // Pausa el video si está reproduciéndose
             } else {
-                // Orientación horizontal
-                avisoOrientacionVertical.style.display = 'none';
-                myVideo.play(); // Reproduce el video si está pausado
+                playVideoAndRedirect();
             }
-        }
-    });
-
-    setTimeout(() => {
-        myVideo.pause(); // Detiene el video después de 44 segundos
-        // Redirige a la ruta especificada
-        window.location.href = '{{ path('app_home') }}'; // Asegúrate de que '{{ path('app_home') }}' se evalúe correctamente en tu entorno
-    }, 44000); // 44 segundos en milisegundos
+        });
+    } else {
+        // Si no es un dispositivo móvil, reproduce el video y redirige después de 44 segundos sin esperar la orientación
+        playVideoAndRedirect();
+    }
 </script>
 {% endblock %}
