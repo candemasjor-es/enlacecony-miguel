@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_videos.html.twig' %}
 
 {% block title %}Enlace cony i miguel - perfil
 {% endblock %}
@@ -6,7 +6,19 @@
 {% block body %}
 	{% include 'header.html.twig' %}
 	<div class="container-fluid text-center">
-
-		sasad
 	</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const video = document.getElementById('myVideo');
+    
+    // Reproducir el video
+    video.play();
+    
+    // Detener el video después de 44 segundos
+    setTimeout(function() {
+        video.pause();
+        window.location.href = '{{ path('app_home') }}';
+    }, 44000); // 44 segundos en milisegundos
+});
+</script>
 {% endblock %}
