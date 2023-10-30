@@ -14,6 +14,13 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            form_login:
+                login_path: app_home
+                check_path: app_login_check
+                default_target_path: app_profile
+                always_use_default_target_path: true
+            entry_point: 'App\Security\LoginFormAuthenticator' 
+
             lazy: true
             provider: app_user_provider
 
@@ -27,13 +34,13 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_home
 
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
-                path: /
-                always_remember_me: true
+                path: /home
+                always_remember_me: false
             login_throttling:
                 max_attempts: 3
                 interval: '15 minutes'
