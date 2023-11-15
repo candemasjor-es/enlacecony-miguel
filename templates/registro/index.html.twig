@@ -7,8 +7,8 @@
 	{% include 'header.html.twig' %}
 	<div class="container-fluid text-center">
 		{% if usuarioEncontrado %}
-			<form action="{{ path('app_register') }}" method="post">
-				{{ render(controller('App\\Controller\\RegistrationController::register')) }}
+			<form action="{{ path('app_register', { 'id': datosRegistrarte.getId() }) }}" method="post">
+				{{ render(controller('App\\Controller\\RegistrationController::register', { 'id': datosRegistrarte.getId() })) }}
 			</form>
 		{% else %}
 			{{ form_start(form, {'attr': {'id': 'formulario'}}

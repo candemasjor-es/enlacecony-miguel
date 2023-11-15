@@ -26,12 +26,14 @@ class RegistroController extends AbstractController
             $data = $form->getData();
             $usuario = $data->getUsuario();
             $usuarioEncontrado = $repository->findByUsuario($usuario);
+            $datosRegistrarte = $repository->findOneBy(['Usuario' => $usuario]);
         }
-
+        $datosRegistrarte = $repository->findOneBy(['Usuario' => $usuario]);
         return $this->render('registro/index.html.twig', [
             'form' => $form->createView(),
             'usuarioEncontrado' => $usuarioEncontrado,
             'usuario' => $usuario,
+            'datosRegistrarte' => $datosRegistrarte, 
         ]);
     }
     #[Route('/registro/{usuario}', name: 'app_registro_modal', methods: ['GET'])]

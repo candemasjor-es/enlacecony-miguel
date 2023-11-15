@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,6 +25,22 @@ class RegistrationFormType extends AbstractType
                 'class' => 'form-control mb-3'
             ],
             'label' => false 
+        ])
+        ->add('name',TextType::class,[
+            'attr' => [
+                'placeholder' => 'Nombre',
+                'class' => 'form-control mb-3'
+            ],
+            'label' => false,
+            'disabled' => true, 
+        ])
+        ->add('surnames',TextType::class,[
+            'attr' => [
+                'placeholder' => 'Apellido',
+                'class' => 'form-control mb-3'
+            ],
+            'label' => false,
+            'disabled' => true, 
         ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
