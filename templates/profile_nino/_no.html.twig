@@ -1,24 +1,13 @@
-{% extends 'base_videos.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Enlace cony i miguel - perfil
+{% block title %}Hello NinoPersonasController!
 {% endblock %}
 
 {% block body %}
 	{% include 'header.html.twig' %}
 	<div class="container-fluid text-center">
+		<div class="row justify-content-center">
+            <p>asa</p>
+		</div>
 	</div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const video = document.getElementById('myVideo');
-    
-    // Reproducir el video
-    video.play();
-    
-    // Detener el video después de 44 segundos
-    setTimeout(function() {
-        video.pause();
-        window.location.href = '{{ path('app_home') }}';
-    }, 44000); // 44 segundos en milisegundos
-});
-</script>
 {% endblock %}
