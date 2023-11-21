@@ -4,24 +4,61 @@
 {% endblock %}
 
 {% block body %}
+<style>
+    .hidden-field {
+        display: none;
+    }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function(alert) {
+        setTimeout(function() {
+            alert.style.display = 'none';
+        }, 10000);
+    });
+});
+</script>
+
 	{% include 'header.html.twig' %}
 	<div class="container-fluid text-center">
-		{% if usuarioEncontrado %}
-			<form action="{{ path('app_register', { 'id': datosRegistrarte.getId() }) }}" method="post">
-				{{ render(controller('App\\Controller\\RegistrationController::register', { 'id': datosRegistrarte.getId() })) }}
-			</form>
-		{% else %}
-			{{ form_start(form, {'attr': {'id': 'formulario'}}
-			) }}
-			<div class="form-group mb-3">
-				{{ form_row(form.Usuario) }}
-			</div>
-			<div class="d-grid gap-1">
-				<button class="btn btn-dark btn-block" type="submit">Entrar</button>
-			</div>
-			{{ form_end(form) }}
-		{% endif %}
+	{% if usuarioEncontrado %}
+    {{ form_start(registroForm) }}
+	<div class="form-group mb-3">
+			{{ form_row(registroForm.Nombre, {'attr': {'class': 'hidden-field'}}) }}
+	</div>
+	<div class="form-group mb-3">
+			{{ form_row(registroForm.Apellidos, {'attr': {'class': 'hidden-field'}}) }}
+	</div>
+	<div class="form-group mb-3">
+        {{ form_row(registroForm.email) }}
+	</div>
+	<div class="d-grid gap-1">
+			<button class="btn btn-dark btn-block" type="submit">Registrar</button>
 	</div>
 
+    {{ form_end(registroForm) }}
+{% else %}
+{% for message in app.flashes('error') %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+		{{ form_start(form) }}
+		<div class="form-group mb-3">
+			{{ form_row(form.Nombre) }}
+		</div>
+		<div class="form-group mb-3">
+			{{ form_row(form.Apellidos) }}
+		</div>
+		<div class="form-group mb-3">
+			{{ form_row(form.email, {'attr': {'class': 'hidden-field'}}) }}
+		</div>
+		<div class="d-grid gap-1">
+			<button class="btn btn-dark btn-block" type="submit">Entrar</button>
+		</div>
+		{{ form_end(form) }}
 
+		{% endif %}
+	</div>
 {% endblock %}

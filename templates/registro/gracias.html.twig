@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enlace cony i miguel - Registro!
+{% endblock %}
+
+{% block body %}
+	{% include 'header.html.twig' %}
+	<div class="container-fluid text-center">
+    <h1>Ya he creado tu correo electrónico, te enviaré un aviso pronto.</h1>
+    <div class="d-grid gap-1">
+			<a href="{{ path('app_home') }}" class="btn btn-dark btn-block">Entrar</a>
+	</div>
+	</div>
+{% endblock %}
