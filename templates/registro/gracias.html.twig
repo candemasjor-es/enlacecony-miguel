@@ -9,6 +9,9 @@
     <h1>Muchas gracias por registrarte. En breves te enviaremos un correo con la contraseña al correo</h1>
     <div class="d-grid gap-1">
 			<a href="{{ path('app_home') }}" class="btn btn-dark btn-block">Entrar</a>
+			{% if generatedPassword is defined %}
+    <p>Contraseña generada: {{ generatedPassword }}</p>
+{% endif %}
 	</div>
 	</div>
 {% endblock %}
