@@ -76,7 +76,7 @@ class RegistroController extends AbstractController
                         $entityManager->flush();
 
                         $email = (new Email())
-                        ->from('eenlaceconymiguel@gmail.com')
+                        ->from('support@enlacecony-miguel.com')
                         ->to($nuevoEmail)
                         ->subject('¡Registro exitoso!')
                         ->html('<p>Muchas gracias por registrarte. tu correo '. $nuevoEmail .'<br> Tu contraseña es: ' . $randomPassword . '</p>');

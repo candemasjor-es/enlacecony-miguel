@@ -6,12 +6,9 @@
 {% block body %}
 	{% include 'header.html.twig' %}
 	<div class="container-fluid text-center">
-    <h1>Muchas gracias por registrarte. En breves te enviaremos un correo con la contraseña al correo</h1>
+    <h1>Muchas gracias por registrarte. En breve te enviaremos un correo con la contraseña (En caso de no recibir, revisalo en el correo SPAM)</h1>
     <div class="d-grid gap-1">
 			<a href="{{ path('app_home') }}" class="btn btn-dark btn-block">Entrar</a>
-			{% if generatedPassword is defined %}
-    <p>Contraseña generada: {{ generatedPassword }}</p>
-{% endif %}
 	</div>
 	</div>
 {% endblock %}
