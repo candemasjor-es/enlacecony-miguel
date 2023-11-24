@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\DatosRegistrarte;
+use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,19 +19,17 @@ class RegistrationController extends AbstractController
     #[Route('/register/{id}', name: 'app_register', methods: ['GET', 'POST'])]
     public function register(DatosRegistrarte $datosRegistrarte, Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
-
         $user = new User();
         $user->setName($datosRegistrarte->getNombre());
         $user->setSurnames($datosRegistrarte->getApellidos());
         $user->setPhome('null');
-        $user->setRoles(array('ROLE_USER'));
+        $user->setRoles(['ROLE_USER']);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         $id = $datosRegistrarte->getId();
         $name = $datosRegistrarte->getNombre();
         $surnames = $datosRegistrarte->getApellidos();
-        
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password

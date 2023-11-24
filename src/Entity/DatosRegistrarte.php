@@ -65,6 +65,7 @@ class DatosRegistrarte
 
         return $this;
     }
+
     public function toArray(): array
     {
         return [

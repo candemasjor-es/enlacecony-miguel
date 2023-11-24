@@ -9,16 +9,16 @@
   "devDependencies": {
     "@hotwired/stimulus": "^3.0.0",
     "@popperjs/core": "^2.11.8",
+    "@prettier/plugin-php": "^0.21.0",
     "@symfony/stimulus-bridge": "^3.2.0",
     "@symfony/webpack-encore": "^4.4.0",
     "bootstrap": "^5.3.2",
     "file-loader": "^6.0.0",
     "jquery": "^3.7.1",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "webpack-notifier": "^1.15.0"
   },
   "dependencies": {
-    "@prettier/plugin-php": "^0.21.0",
     "core-js": "^3.33.0",
     "prettier-plugin-twig-melody": "^0.3.9",
     "stimulus": "^3.2.2"

@@ -35,5 +35,4 @@ class RolesType extends AbstractType
             'data_class' => User::class,
         ]);
     }
-    
 }

@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class User1Type extends AbstractType
 {
@@ -21,15 +21,14 @@ class User1Type extends AbstractType
                     'Usuarios nuevo' => 'ROLE_USER',
                     'Si asisto' => 'ROLE_YES',
                     'No asisto' => 'ROLE_NO',
-                    
                 ],
                 'multiple' => true,
                 'expanded' => true,
             ])
             ->add('password')
-            ->add('name',TextType::class)
-            ->add('surnames',TextType::class)
-            ->add('phome',TextType::class)
+            ->add('name', TextType::class)
+            ->add('surnames', TextType::class)
+            ->add('phome', TextType::class)
         ;
     }
 

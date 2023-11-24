@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\DatosRegistrarteType;
 use App\Repository\DatosRegistrarteRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\User;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 class RegistroController extends AbstractController
 {
@@ -21,7 +21,7 @@ class RegistroController extends AbstractController
     {
         $form = $this->createForm(DatosRegistrarteType::class);
         $form->handleRequest($request);
-        
+
         $usuarioEncontrado = false;
         $datosRegistrarte = null;
         $registroForm = $this->createForm(DatosRegistrarteType::class); // Define $registroForm aquí
@@ -32,34 +32,35 @@ class RegistroController extends AbstractController
             $apellidos = $data->getApellidos();
             $datosRegistrarte = $repository->findOneBy([
                 'nombre' => $nombre,
-                'apellidos' => $apellidos
+                'apellidos' => $apellidos,
             ]);
             if ($datosRegistrarte) {
                 $registroForm = $this->createForm(DatosRegistrarteType::class);
                 $registroForm->handleRequest($request);
                 if (!$usuarioEncontrado && $registroForm->isSubmitted() && $registroForm->isValid()) {
                     $nuevoEmail = $data->getEmail();
-                    if ($nuevoEmail !== null) {                   
+                    if (null !== $nuevoEmail) {
                         $datosRegistrarte->setEmail($nuevoEmail);
                         $user = new User();
-                        function generateRandomPassword() {
+                        function generateRandomPassword()
+                        {
                             $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                             $lowercase = 'abcdefghijklmnopqrstuvwxyz';
                             $numbers = '0123456789';
-                        
+
                             $password = $uppercase[random_int(0, strlen($uppercase) - 1)];
-                        
-                            for ($i = 0; $i < 7; $i++) {
+
+                            for ($i = 0; $i < 7; ++$i) {
                                 $password .= $lowercase[random_int(0, strlen($lowercase) - 1)];
                             }
-                        
-                            for ($i = 0; $i < 7; $i++) {
+
+                            for ($i = 0; $i < 7; ++$i) {
                                 $password .= $numbers[random_int(0, strlen($numbers) - 1)];
                             }
-                        
+
                             return str_shuffle($password);
                         }
-                
+
                         $randomPassword = generateRandomPassword();
 
                         $password = $userPasswordHasher->hashPassword(
@@ -69,7 +70,7 @@ class RegistroController extends AbstractController
                         $user->setName($datosRegistrarte->getNombre());
                         $user->setSurnames($datosRegistrarte->getApellidos());
                         $user->setPhome('null');
-                        $user->setRoles(array('ROLE_USER'));
+                        $user->setRoles(['ROLE_USER']);
                         $user->setEmail($nuevoEmail);
                         $user->setPassword($password);
                         $entityManager->persist($user);
@@ -79,19 +80,17 @@ class RegistroController extends AbstractController
                         ->from('support@enlacecony-miguel.com')
                         ->to($nuevoEmail)
                         ->subject('¡Registro exitoso!')
-                        ->html('<p>Muchas gracias por registrarte. tu correo '. $nuevoEmail .'<br> Tu contraseña es: ' . $randomPassword . '</p>');
+                        ->html('<p>Muchas gracias por registrarte. tu correo '.$nuevoEmail.'<br> Tu contraseña es: '.$randomPassword.'</p>');
 
                         $mailer->send($email);
 
                         return $this->redirectToRoute('app_registro_gracias', [], Response::HTTP_SEE_OTHER);
-
                     }
-                    
                 }
             } else {
                 $this->addFlash('error', 'Nombre y apellidos no encontrados.');
             }
-            $usuarioEncontrado = $datosRegistrarte !== null;
+            $usuarioEncontrado = null !== $datosRegistrarte;
         }
 
         return $this->render('registro/index.html.twig', [

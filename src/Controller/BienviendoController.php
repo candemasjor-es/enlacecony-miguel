@@ -14,10 +14,11 @@ class BienviendoController extends AbstractController
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+
         return $this->render('bienviendo/index.html.twig', [
             'controller_name' => 'BienviendoController',
             'last_username' => $lastUsername,
-            'error' => $error
+            'error' => $error,
         ]);
     }
 }

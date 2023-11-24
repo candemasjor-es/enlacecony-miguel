@@ -5,9 +5,9 @@ namespace App\Form;
 use App\Entity\DatosRegistrarte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class DatosRegistrarteType extends AbstractType
 {
@@ -17,21 +17,21 @@ class DatosRegistrarteType extends AbstractType
             ->add('Nombre', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Nombre',
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3',
                 ],
-                'label' => false
+                'label' => false,
             ])
             ->add('Apellidos', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Apellido',
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3',
                 ],
-                'label' => false
+                'label' => false,
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
                     'placeholder' => 'Correo electrónico',
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3',
                 ],
                 'label' => false,
                 'required' => false,

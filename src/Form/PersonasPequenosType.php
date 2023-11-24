@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\PersonasPequenos;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PersonasPequenosType extends AbstractType
 {
@@ -16,14 +16,14 @@ class PersonasPequenosType extends AbstractType
         $builder
             ->add('nombres', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3 font-family: Edwardian;'
+                    'class' => 'form-control mb-3 font-family: Edwardian;',
                 ],
                 'label' => 'Nombre',
                 'label_attr' => ['class' => 'label-formularop'],
             ])
             ->add('Apellidos', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3',
                 ],
                 'label' => 'Apellido',
                 'label_attr' => ['class' => 'label-formularop'],
