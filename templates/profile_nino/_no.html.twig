@@ -5,6 +5,19 @@
 
 {% block body %}
 	{% include 'header.html.twig' %}
+	<style type="text/css">
+			.no-link {
+				pointer-events: none;
+				cursor: default;
+			}
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', (event) => {
+			document.querySelectorAll('.no-link').forEach((element) => {
+			element.innerHTML = element.textContent;
+			});
+		});
+		</script>
 	<div class="container-fluid text-center">
 			<h1>Muchas Gracias</h1>
 			<div class="card text-white bg-dark">
@@ -23,10 +36,10 @@
 			<div class="card text-white bg-dark">
 				<h5 class="card-header">Cuenta de banco</h5>
 				<div class="card-body">
-					<h5 class="card-title">IBAN ES77 1465 0100 9617 4820 4664</h5>
+					<h5 class="card-title no-link">IBAN ES77 1465 0100 9617 4820 4664</h5>
 				</div>
 			</div>
-	
+		<br/>
 	<div class="d-grid gap-1">
 		<button class="btn btn-dark btn-block" type="submit">Entrar</button>
 	</div>
