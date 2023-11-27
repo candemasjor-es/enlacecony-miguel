@@ -13,14 +13,71 @@
 			}
 		</style>
 		<script>
-			document.addEventListener('DOMContentLoaded', (event) => {
-			document.querySelectorAll('.no-link').forEach((element) => {
-			element.innerHTML = element.textContent;
-			});
-		});
-		</script>
+							document.addEventListener('DOMContentLoaded', (event) => {
+							document.querySelectorAll('.no-link').forEach((element) => {
+							element.innerHTML = element.textContent;
+							});
+						});
+						</script>
 		{% if is_granted('ROLE_ADMIN') %}
-			assas
+			<div class="row">
+			<div class="col">
+			<a class="link-underline-dark" href="#">
+					<div class="card text-white bg-dark">
+						<h5 class="card-header">
+							<span class="material-icons icon-large">
+								person_add
+							</span><br/>Personas Registros
+						</h5>
+						<div class="card-body">
+							<h5 class="card-title">{{ totalDatos }}</h5>
+						</div>
+					</div>
+					</a>
+				</div>
+				<div class="col">
+				<a class="link-underline-dark" href="{{ path('app_user_index') }}">
+					<div class="card text-white bg-dark">
+						<h5 class="card-header">
+							<span class="material-icons icon-large">
+								badge
+							</span><br/>Usuarios
+						</h5>
+						<div class="card-body">
+							<h5 class="card-title">{{ totalUsers }}</h5>
+						</div>
+					</div>
+					</a>
+				</div>
+				<div class="col">
+				<a class="link-underline-dark" href="#">
+					<div class="card text-white bg-dark">
+						<h5 class="card-header">
+							<span class="material-icons icon-large">
+								supervisor_account
+							</span><br/>hijos/as
+						</h5>
+						<div class="card-body">
+							<h5 class="card-title">{{ totalPersonasPequenos }}</h5>
+						</div>
+					</div>
+					</a>
+				</div>
+				<div class="col">
+				<a class="link-underline-dark" href="#">
+					<div class="card text-white bg-dark">
+						<h5 class="card-header">
+							<span class="material-icons icon-large">
+								commute
+							</span><br/>coche/bus
+						</h5>
+						<div class="card-body">
+							<h5 class="card-title">1</h5>
+						</div>
+					</div>
+					</a>
+				</div>
+			</div>
 		{% elseif is_granted('ROLE_YES')  %}
 			<div class="card text-white bg-dark">
 				<h5 class="card-header">Dónde celebramos</h5>

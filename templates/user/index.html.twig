@@ -4,19 +4,20 @@
 {% endblock %}
 
 {% block body %}
-	<h1>User index</h1>
+{% include 'header.html.twig' %}
+<div class="container-fluid text-center">
+	<h1>Usuarios</h1>
 
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Email</th>
-				<th>Roles</th>
-				<th>Password</th>
-				<th>Name</th>
-				<th>Surnames</th>
-				<th>Phome</th>
-				<th>actions</th>
+				<th>Correo electrónico</th>
+				<th>Grupo</th>
+				<th>Contraseña</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,19 +29,19 @@
 					<td>{{ user.password }}</td>
 					<td>{{ user.name }}</td>
 					<td>{{ user.surnames }}</td>
-					<td>{{ user.phome }}</td>
 					<td>
-						<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-						<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+						<a href="{{ path('app_user_show', {'id': user.id}) }}">mostrar</a>
+						<a href="{{ path('app_user_edit', {'id': user.id}) }}">editar</a>
 					</td>
 				</tr>
 			{% else %}
 				<tr>
-					<td colspan="8">no records found</td>
+					<td colspan="8">No se han encontrado registros</td>
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 
 	<a href="{{ path('app_user_new') }}">Create new</a>
+</div>
 {% endblock %}

@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\DataTransformer\RolesToArrayTransformer;
 use App\Entity\Personas;
 use App\Entity\User;
+use App\Repository\UserRepository;
+use App\Repository\PersonasPequenosRepository;
+use App\Repository\DatosRegistrarteRepository;
 use App\Form\AttendType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,12 +30,18 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/', name: 'app_profile')]
-    public function index(): Response
+    public function index(UserRepository $userRepository, PersonasPequenosRepository $repo, DatosRegistrarteRepository $repodatos): Response
     {
         $user = $this->getUser();
+        $totalUsers = $userRepository->countAllUsers();
+        $totalPersonasPequenos = $repo->countAllPersonasPequenos();
+        $totalDatos = $repodatos->countAllDatosRegistrarte();
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,
+            'totalUsers' => $totalUsers,
+            'totalPersonasPequenos' => $totalPersonasPequenos,
+            'totalDatos' => $totalDatos,
         ]);
     }
 

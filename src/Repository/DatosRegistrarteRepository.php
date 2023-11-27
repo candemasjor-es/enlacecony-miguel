@@ -29,7 +29,13 @@ class DatosRegistrarteRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
-
+    public function countAllDatosRegistrarte()
+    {
+    return $this->createQueryBuilder('dr')
+        ->select('count(dr.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+    }   
     //    /**
     //     * @return DatosRegistrarte[] Returns an array of DatosRegistrarte objects
     //     */

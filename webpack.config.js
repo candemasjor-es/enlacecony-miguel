@@ -80,7 +80,7 @@ Encore
         from: './assets/images',
 
         // optional target path, relative to the output dir
-       to: 'images/[path][name].[ext]',
+    to: 'images/[path][name].[ext]',
 
        // if versioning is enabled, add the file hash too
        //to: 'images/[path][name].[hash:8].[ext]',
@@ -92,7 +92,7 @@ Encore
         from: './assets/fonts',
 
         // optional target path, relative to the output dir
-       to: 'fonts/[path][name].[ext]',
+    to: 'fonts/[path][name].[ext]',
 
        // if versioning is enabled, add the file hash too
        //to: 'fonts/[path][name].[hash:8].[ext]',
@@ -104,7 +104,7 @@ Encore
         from: './assets/videos',
 
         // optional target path, relative to the output dir
-       to: 'fonts/[path][name].[ext]',
+    to: 'fonts/[path][name].[ext]',
 
        // if versioning is enabled, add the file hash too
        //to: 'fonts/[path][name].[hash:8].[ext]',
@@ -112,6 +112,14 @@ Encore
         // only copy files matching this pattern
         //pattern: /\.(png|jpg|jpeg)$/
     })
-;
+    
+    .copyFiles({
+        from: './node_modules/material-icons/iconfont',
+        // destino en el directorio de salida (public/build)
+        to: 'material-icons/[path][name].[ext]',
+        // solo copiar archivos que terminan con .woff y .woff2
+        pattern: /\.(woff|woff2)$/
+    })
+    ;
 
 module.exports = Encore.getWebpackConfig();

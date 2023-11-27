@@ -21,6 +21,13 @@ class PersonasPequenosRepository extends ServiceEntityRepository
         parent::__construct($registry, PersonasPequenos::class);
     }
 
+    public function countAllPersonasPequenos()
+    {
+        return $this->createQueryBuilder('personas_pequenos')
+            ->select('count(personas_pequenos.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     //    /**
     //     * @return PersonasPequenos[] Returns an array of PersonasPequenos objects
     //     */
