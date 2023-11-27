@@ -16,7 +16,7 @@
 				<th>Grupo</th>
 				<th>Contraseña</th>
 				<th>Nombre</th>
-				<th>Apellidos</th>
+				<th>Apellido</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
@@ -30,8 +30,12 @@
 					<td>{{ user.name }}</td>
 					<td>{{ user.surnames }}</td>
 					<td>
-						<a href="{{ path('app_user_show', {'id': user.id}) }}">mostrar</a>
-						<a href="{{ path('app_user_edit', {'id': user.id}) }}">editar</a>
+						<a href="{{ path('app_user_show', {'id': user.id}) }}"><span class="material-icons">
+								visibility
+							</span></a>
+						<a href="{{ path('app_user_edit', {'id': user.id}) }}"><span class="material-icons">
+								edit
+							</span></a>
 					</td>
 				</tr>
 			{% else %}
@@ -42,6 +46,6 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('app_user_new') }}">Create new</a>
+	<a class="btn btn-dark btn-block" href="{{ path('app_user_new') }}">Crear nuevo</a>
 </div>
 {% endblock %}

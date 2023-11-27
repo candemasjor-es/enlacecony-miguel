@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User
+{% block title %}Usuario
 {% endblock %}
 
 {% block body %}
+{% include 'header.html.twig' %}
+<div class="container-fluid text-center">
 	<h1>User</h1>
 
 	<table class="table">
@@ -13,35 +15,30 @@
 				<td>{{ user.id }}</td>
 			</tr>
 			<tr>
-				<th>Email</th>
+				<th>Correo electrónico</th>
 				<td>{{ user.email }}</td>
 			</tr>
 			<tr>
-				<th>Roles</th>
+				<th>Grupo</th>
 				<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
 			</tr>
 			<tr>
-				<th>Password</th>
+				<th>Contraseña</th>
 				<td>{{ user.password }}</td>
 			</tr>
 			<tr>
-				<th>Name</th>
+				<th>Nombre</th>
 				<td>{{ user.name }}</td>
 			</tr>
 			<tr>
-				<th>Surnames</th>
+				<th>Apellido</th>
 				<td>{{ user.surnames }}</td>
-			</tr>
-			<tr>
-				<th>Phome</th>
-				<td>{{ user.phome }}</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<a href="{{ path('app_user_index') }}">back to list</a>
+	<a class="btn btn-dark btn-block" href="{{ path('app_user_index') }}">Volver a la lista</a>
 
-	<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-
-	{{ include('user/_delete_form.html.twig') }}
+	<a class="btn btn-dark btn-block" href="{{ path('app_user_edit', {'id': user.id}) }}">Editar</a>
+	</div>
 {% endblock %}
