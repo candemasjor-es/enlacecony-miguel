@@ -139,4 +139,18 @@ class ProfileController extends AbstractController
             'personas' => $resultado,
         ]);
     }
+    #[Route('/administrador/evento', name: 'app_persona_evento', methods: ['GET'])]
+    public function personasevento(EntityManagerInterface $em): Response
+    {
+        $query = $em->createQuery('
+        SELECT personas, user
+        FROM App\Entity\Personas personas
+        INNER JOIN personas.user user
+    ');
+        $resultado = $query->getResult();
+
+        return $this->render('profile/personas_evento.html.twig', [
+            'personas' => $resultado,
+        ]);
+    }
 }

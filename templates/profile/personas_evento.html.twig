@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index
+{% block title %}evento
 {% endblock %}
 
 {% block body %}
 {% include 'header.html.twig' %}
 <div class="container-fluid text-center">
 {% if is_granted('ROLE_ADMIN') %}
-	<h1>Personas y menu</h1>
+	<h1>evento</h1>
     <table class="table">
 		<thead>
 			<tr>
@@ -15,10 +15,8 @@
                 <th>Correo electrónico</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
-				<th>Elegir menu</th>
-				<th>Menu otro</th>
-				<th>Cancion Favorito</th>
-                <th>Acciones</th>
+				<th>evento</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,9 +26,7 @@
                     <td>{{ persona.User.email }}</td>
 					<td>{{ persona.nombres }}</td>
 					<td>{{ persona.apellidos }}</td>
-					<td>{{ persona.elegirmenu }}</td>
-                    <td>{{ persona.otro }}</td>
-					<td>{{ persona.cancionfavorito }}</td>
+					<td>{{ persona.evento }}</td>
 					<td>
 						<a href="{{ path('app_user_show', {'id': persona.id}) }}"><span class="material-icons">
 								visibility
