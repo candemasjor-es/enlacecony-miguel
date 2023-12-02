@@ -31,11 +31,11 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/', name: 'app_profile')]
-    public function index(UserRepository $userRepository, PersonasPequenosRepository $repo,PersonasRepository $personas, DatosRegistrarteRepository $repodatos): Response
+    public function index(UserRepository $userRepository, PersonasPequenosRepository $repo, PersonasRepository $personas, DatosRegistrarteRepository $repodatos): Response
     {
         $user = $this->getUser();
         $totalUsers = $userRepository->countAllUsers();
-        $totalpersonas =$personas->countAllPersonas();
+        $totalpersonas = $personas->countAllPersonas();
         $totalPersonasPequenos = $repo->countAllPersonasPequenos();
         $totalDatos = $repodatos->countAllDatosRegistrarte();
 
@@ -73,15 +73,15 @@ class ProfileController extends AbstractController
             $personas[] = $persona;
         }
         $form = $this->createFormBuilder(['personas' => $personas])
-        ->add('User', EntityType::class, [
-            'class' => User::class,
-            'choice_label' => 'id',
-            'required' => true,
-            'attr' => [
-                'style' => 'display:none;',
-            ],
-            'label' => false,
-        ])
+            ->add('User', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'id',
+                'required' => true,
+                'attr' => [
+                    'style' => 'display:none;',
+                ],
+                'label' => false,
+            ])
             ->add('personas', CollectionType::class, [
                 'entry_type' => AttendType::class,
                 'allow_add' => true,
@@ -122,6 +122,21 @@ class ProfileController extends AbstractController
 
         return $this->render('profile/personas.html.twig', [
             'user' => $user,
+        ]);
+    }
+
+    #[Route('/administrador/persona', name: 'app_administrador_persona', methods: ['GET'])]
+    public function personasadmin(EntityManagerInterface $em): Response
+    {
+        $query = $em->createQuery('
+        SELECT personas, user
+        FROM App\Entity\Personas personas
+        INNER JOIN personas.user user
+    ');
+        $resultado = $query->getResult();
+
+        return $this->render('profile/personas_administrador.html.twig', [
+            'personas' => $resultado,
         ]);
     }
 }

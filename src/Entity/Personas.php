@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use App\Repository\PersonasRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,7 +16,7 @@ class Personas
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'personas')]
-    private ?User $User = null;
+    private ?User $user = null;
 
     #[ORM\Column(length: 255)]
     private ?string $Nombres = null;
@@ -42,12 +43,12 @@ class Personas
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
     public function setUser(?User $User): static
     {
-        $this->User = $User;
+        $this->user = $User;
 
         return $this;
     }

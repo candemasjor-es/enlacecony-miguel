@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index
+{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+<div class="container-fluid text-center">
+	<h1>Personas y menu</h1>
+    <table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+                <th>Correo electrónico</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Elegir menu</th>
+				<th>Menu otro</th>
+				<th>Cancion Favorito</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for persona in personas %}
+				<tr>
+					<td>{{ persona.id }}</td>
+                    <td>{{ persona.User.email }}</td>
+					<td>{{ persona.nombres }}</td>
+					<td>{{ persona.apellidos }}</td>
+					<td>{{ persona.elegirmenu }}</td>
+                    <td>{{ persona.otro }}</td>
+					<td>{{ persona.cancionfavorito }}</td>
+					<td>
+						<a href="{{ path('app_user_show', {'id': persona.id}) }}"><span class="material-icons">
+								visibility
+							</span></a>
+						<a href="{{ path('app_user_edit', {'id': persona.id}) }}"><span class="material-icons">
+								edit
+							</span></a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">No se han encontrado registros</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
