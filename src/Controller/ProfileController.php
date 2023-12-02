@@ -6,6 +6,7 @@ use App\DataTransformer\RolesToArrayTransformer;
 use App\Entity\Personas;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Repository\PersonasRepository;
 use App\Repository\PersonasPequenosRepository;
 use App\Repository\DatosRegistrarteRepository;
 use App\Form\AttendType;
@@ -30,16 +31,18 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/', name: 'app_profile')]
-    public function index(UserRepository $userRepository, PersonasPequenosRepository $repo, DatosRegistrarteRepository $repodatos): Response
+    public function index(UserRepository $userRepository, PersonasPequenosRepository $repo,PersonasRepository $personas, DatosRegistrarteRepository $repodatos): Response
     {
         $user = $this->getUser();
         $totalUsers = $userRepository->countAllUsers();
+        $totalpersonas =$personas->countAllPersonas();
         $totalPersonasPequenos = $repo->countAllPersonasPequenos();
         $totalDatos = $repodatos->countAllDatosRegistrarte();
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,
             'totalUsers' => $totalUsers,
+            'totalPersonas' => $totalpersonas,
             'totalPersonasPequenos' => $totalPersonasPequenos,
             'totalDatos' => $totalDatos,
         ]);

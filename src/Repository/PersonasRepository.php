@@ -20,7 +20,13 @@ class PersonasRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Personas::class);
     }
-
+    public function countAllPersonas()
+    {
+        return $this->createQueryBuilder('personas')
+            ->select('count(personas.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     //    /**
     //     * @return Personas[] Returns an array of Personas objects
     //     */
