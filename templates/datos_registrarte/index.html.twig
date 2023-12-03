@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datos Registrarte inicio{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+<div class="container-fluid text-center">
+    <h1>DatosRegistrarte index</h1>
+    <a class="btn btn-dark btn-block"  href="{{ path('app_datos_registrarte_new') }}">Crear nuevo</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for datos_registrarte in datos_registrartes %}
+            <tr>
+                <td>{{ datos_registrarte.id }}</td>
+                <td>{{ datos_registrarte.nombre }}</td>
+                <td>{{ datos_registrarte.apellidos }}</td>
+                <td>
+                    <a href="{{ path('app_datos_registrarte_show', {'id': datos_registrarte.id}) }}"><span class="material-icons">
+								visibility
+							</span></a>
+                    <a href="{{ path('app_datos_registrarte_edit', {'id': datos_registrarte.id}) }}"><span class="material-icons">
+								edit
+							</span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No se han encontrado registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

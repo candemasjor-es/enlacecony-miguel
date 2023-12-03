@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datos Registrarte{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+<div class="container-fluid text-center">
+    <h1>Datos Registrarte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ datos_registrarte.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ datos_registrarte.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ datos_registrarte.apellidos }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-dark btn-block"  href="{{ path('app_datos_registrarte_index') }}">Volver a la lista</a>
+
+    <a class="btn btn-dark btn-block"  href="{{ path('app_datos_registrarte_edit', {'id': datos_registrarte.id}) }}">Editar</a>
+</div>
+{% endblock %}

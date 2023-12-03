@@ -53,6 +53,7 @@ security:
         - { path: ^/user, roles: ROLE_ADMIN }
         - { path: ^/elegirmenu, roles: ['ROLE_USER', ROLE_ADMIN]}
         - { path: ^/administrador/persona, roles: [ROLE_ADMIN]}
+        - { path: ^/datosregistrarte, roles: [ROLE_ADMIN]}
 framework:
     rate_limiter:
         # define 2 rate limiters (one for username+IP, the other for IP)

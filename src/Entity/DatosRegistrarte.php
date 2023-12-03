@@ -14,33 +14,16 @@ class DatosRegistrarte
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Usuario = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $nombre = null;
 
     #[ORM\Column(length: 255)]
     private ?string $apellidos = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsuario(): ?string
-    {
-        return $this->Usuario;
-    }
-
-    public function setUsuario(string $Usuario): static
-    {
-        $this->Usuario = $Usuario;
-
-        return $this;
-    }
 
     public function getNombre(): ?string
     {
@@ -70,21 +53,9 @@ class DatosRegistrarte
     {
         return [
             'id' => $this->id,
-            'Usuario' => $this->Usuario,
             'nombre' => $this->nombre,
             'apellidos' => $this->apellidos,
         ];
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
-    }
 }
