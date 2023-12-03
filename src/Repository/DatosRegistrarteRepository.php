@@ -20,15 +20,6 @@ class DatosRegistrarteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, DatosRegistrarte::class);
     }
-
-    public function findByUsuario($usuario)
-    {
-        return $this->createQueryBuilder('u')
-            ->where('u.Usuario = :usuario')
-            ->setParameter('usuario', $usuario)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
     public function countAllDatosRegistrarte()
     {
     return $this->createQueryBuilder('dr')
