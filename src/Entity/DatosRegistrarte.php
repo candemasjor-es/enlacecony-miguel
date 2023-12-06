@@ -24,6 +24,8 @@ class DatosRegistrarte
         return $this->id;
     }
 
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
 
     public function getNombre(): ?string
     {
@@ -56,6 +58,17 @@ class DatosRegistrarte
             'nombre' => $this->nombre,
             'apellidos' => $this->apellidos,
         ];
+    }
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
     }
 
 }
