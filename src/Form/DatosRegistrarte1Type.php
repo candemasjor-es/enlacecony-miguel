@@ -15,14 +15,14 @@ class DatosRegistrarte1Type extends AbstractType
         $builder
             ->add('nombre', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Nombre completo',
+                    'placeholder' => 'Nombre',
                     'class' => 'form-control mb-3',
                 ],
                 'label' => false,
             ])
             ->add('apellidos', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Primer apellido',
+                    'placeholder' => 'Apellido',
                     'class' => 'form-control mb-3',
                 ],
                 'label' => false,
