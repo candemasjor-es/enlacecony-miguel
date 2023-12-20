@@ -21,3 +21,8 @@ yarn-error.log
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
 .env
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
