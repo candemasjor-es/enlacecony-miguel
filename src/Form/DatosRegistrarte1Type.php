@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\DatosRegistrarte;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,6 +27,10 @@ class DatosRegistrarte1Type extends AbstractType
                     'class' => 'form-control mb-3',
                 ],
                 'label' => false,
+            ])
+            ->add('email', EmailType::class, [
+                'required' => false, // Permite que el campo no sea obligatorio
+                'mapped' => false,   // Evita que el campo se asocie con una propiedad de la entidad
             ])
         ;
     }
