@@ -30,8 +30,11 @@ class DatosRegistrarteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $email = $datosRegistrarte->getEmail();
-        if ($email !== null) {
+            $email = $form->get('email')->getData();
+
+            if ($email !== null) { 
+            $datosRegistrarte->setEmail($email);
+
             $entityManager->persist($datosRegistrarte);
             $entityManager->flush();
 
