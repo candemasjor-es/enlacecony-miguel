@@ -30,8 +30,9 @@ class DatosRegistrarte1Type extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'required' => false, 
+                'label' => false,
                 'attr' => ['style' => 'display: none;'],
-                'data' => null,
+                'data' => 'null',
             ])
         ;
     }
