@@ -30,10 +30,15 @@ class DatosRegistrarteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($datosRegistrarte);
-            $entityManager->flush();
+            $email = $datosRegistrarte->getEmail();
 
-            return $this->redirectToRoute('app_datos_registrarte_index', [], Response::HTTP_SEE_OTHER);
+            if ($email !== null && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $entityManager->persist($datosRegistrarte);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_datos_registrarte_index', [], Response::HTTP_SEE_OTHER);
+    } else {
+    }
         }
 
         return $this->render('datos_registrarte/new.html.twig', [
