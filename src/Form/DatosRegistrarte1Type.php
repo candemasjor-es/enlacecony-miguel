@@ -29,8 +29,8 @@ class DatosRegistrarte1Type extends AbstractType
                 'label' => false,
             ])
             ->add('email', EmailType::class, [
-                'required' => false, // Permite que el campo no sea obligatorio
-                'mapped' => false,   // Evita que el campo se asocie con una propiedad de la entidad
+                'required' => false, 
+                'attr' => ['style' => 'display: none;'],
             ])
         ;
     }
