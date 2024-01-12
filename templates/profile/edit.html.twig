@@ -46,19 +46,20 @@
 					{{ form_row(persona.Cancion_favorito) }}
 				</div>
 			</div>
-			 <script>
+			<script>
 			
 			$(document).ready(function() {
-			    $('.menu-radio').change(function() {
-			        var selectElement = $('[id^=form_personas_'+{{ loop.index0 }}+'_Elegir_menu]');
-			        var personaElement = $('.persona' + {{ loop.index0 }});
+			$('.menu-radio').change(function() {
+			var selectElement = $('[id^=form_personas_'+{{ loop.index0 }}+'_Elegir_menu]');
+			var personaElement = $('.persona' + {{ loop.index0 }});
 			
-			        if (selectElement.val() === 'Otro') {
+			if (selectElement.val() === 'Otro') {
 			            personaElement.show();  // Mostrar la fila
-			        } else {
+			} else {
 			            personaElement.hide();  // Ocultar la fila
-			        }
-			    });
+			}
+			});+
+			++
 			});
 			
 			</script>

@@ -139,6 +139,21 @@ class ProfileController extends AbstractController
             'personas' => $resultado,
         ]);
     }
+    #[Route('/administrador/persona/{id}', name: 'app_administrador_persona', methods: ['GET', 'POST'])]
+    public function personaEdita(Personas $personas, Request $request, EntityManagerInterface $entityManager)
+    {
+        $form = $this->createForm(AttendType::class, $personas);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render('user/edit.html.twig', [
+            'personas' => $personas,
+            'form' => $form,
+        ]);
+    }
     #[Route('/administrador/evento', name: 'app_persona_evento', methods: ['GET'])]
     public function personasevento(EntityManagerInterface $em): Response
     {
