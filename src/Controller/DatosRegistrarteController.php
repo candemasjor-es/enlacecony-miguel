@@ -30,7 +30,6 @@ class DatosRegistrarteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entityManager->persist($datosRegistrarte);
             $entityManager->flush();
 
