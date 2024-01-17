@@ -146,6 +146,7 @@ class ProfileController extends AbstractController
         SELECT personas, user
         FROM App\Entity\Personas personas
         INNER JOIN personas.user user
+        ORDER BY personas.id ASC
     ');
         $resultado = $query->getResult();
 
