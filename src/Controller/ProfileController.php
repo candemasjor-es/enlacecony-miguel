@@ -161,7 +161,7 @@ class ProfileController extends AbstractController
         $query = $em->createQuery('
         SELECT personas_pequenos, user
         FROM App\Entity\PersonasPequenos personas_pequenos
-        INNER JOIN personas_pequenos.user user
+        INNER JOIN personas.user user
         ORDER BY personas_pequenos.id ASC
     ');
         $resultado = $query->getResult();
