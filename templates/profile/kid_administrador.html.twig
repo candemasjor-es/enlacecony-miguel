@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index
+{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+<div class="container-fluid text-center">
+{% if is_granted('ROLE_ADMIN') %}
+	<h1>Personas y menu</h1>
+    <table class="table table-dark table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+                <th>Correo electrónico</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>tronas</th>
+                <th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for personas_pequeno in personas_pequenos %}
+				<tr>
+                    <td>{{ personas_pequenos.User.email }}</td>
+					<td>{{ personas_pequenos.nombres }}</td>
+					<td>{{ personas_pequenos.apellidos }}</td>
+					<td>{{ personas_pequenos.tronas }}</td>
+					<td>
+						<a href="{{ path('app_user_show', {'id': personas_pequenos.id}) }}"><span class="material-icons">
+								visibility
+							</span></a>
+						<a href="{{ path('app_user_edit', {'id': personas_pequenos.id}) }}"><span class="material-icons">
+								edit
+							</span></a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">No se han encontrado registros</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    {% elseif is_granted('ROLE_YES')  %}
+    No puedes administrador en el servidor
+    {% elseif is_granted('ROLE_USER')  %}
+    No puedes administrador en el servidor
+    {% endif %}
+</div>
+{% endblock %}

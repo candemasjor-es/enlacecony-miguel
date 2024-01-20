@@ -155,4 +155,20 @@ class ProfileController extends AbstractController
             'personas' => $resultado,
         ]);
     }
+    #[Route('/administrador/kid', name: 'app_administrador_kid', methods: ['GET'])]
+    public function kidadmin(EntityManagerInterface $em): Response
+    {
+        $query = $em->createQuery('
+        SELECT personas_pequenos, user
+        FROM App\Entity\PersonasPequenos personas_pequenos
+        INNER JOIN personas_pequenos.user user
+        ORDER BY personas_pequenos.id ASC
+        ORDER BY personas_pequenos.id ASC
+    ');
+        $resultado = $query->getResult();
+
+        return $this->render('profile/kid_administrador.html.twig', [
+            'personas_pequenos' => $resultado,
+        ]);
+    }
 }
