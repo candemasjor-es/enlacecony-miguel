@@ -167,7 +167,7 @@ class ProfileController extends AbstractController
         $resultado = $query->getResult();
 
         return $this->render('profile/kid_administrador.html.twig', [
-            'PersonasPequenos' => $resultado,
+            'personas_pequenos' => $resultado,
         ]);
     }
 }
