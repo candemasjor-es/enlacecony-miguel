@@ -163,7 +163,6 @@ class ProfileController extends AbstractController
         FROM App\Entity\PersonasPequenos personas_pequenos
         INNER JOIN personas_pequenos.user user
         ORDER BY personas_pequenos.id ASC
-        ORDER BY personas_pequenos.id ASC
     ');
         $resultado = $query->getResult();
 
