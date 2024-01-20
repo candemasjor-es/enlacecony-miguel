@@ -20,17 +20,18 @@
 			</tr>
 		</thead>
 		<tbody>
-            {% for personas_pequeno in personas_pequenos %}
+            {% for PersonasPequeno in PersonasPequenos %}
 				<tr>
-                    <td>{{ personas_pequenos.User.email }}</td>
-					<td>{{ personas_pequenos.nombres }}</td>
-					<td>{{ personas_pequenos.apellidos }}</td>
-					<td>{{ personas_pequenos.tronas }}</td>
+					<td>{{ PersonasPequenos.id }}</td>
+                    <td>{{ PersonasPequenos.User.email }}</td>
+					<td>{{ PersonasPequenos.nombres }}</td>
+					<td>{{ PersonasPequenos.apellidos }}</td>
+					<td>{{ PersonasPequenos.tronas }}</td>
 					<td>
-						<a href="{{ path('app_user_show', {'id': personas_pequenos.id}) }}"><span class="material-icons">
+						<a href="{{ path('app_user_show', {'id': PersonasPequenos.id}) }}"><span class="material-icons">
 								visibility
 							</span></a>
-						<a href="{{ path('app_user_edit', {'id': personas_pequenos.id}) }}"><span class="material-icons">
+						<a href="{{ path('app_user_edit', {'id': PersonasPequenos.id}) }}"><span class="material-icons">
 								edit
 							</span></a>
 					</td>
